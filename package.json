@@ -1,0 +1,19 @@
+{
+  "name": "ckanDOWN",
+  "version": "1.0.0",
+  "description": "LevelDOWN drop in replacement for the CKAN DataStore API",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "Finn Pauls",
+  "license": "MIT",
+  "dependencies": {
+    "abstract-leveldown": "^2.0.1",
+    "request": "^2.42.0",
+    "tap": "^0.4.12"
+  },
+  "devDependencies": {
+    "tape": "^2.14.0"
+  }
+}
