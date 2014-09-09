@@ -86,6 +86,7 @@ ckanDOWN.prototype._get = function (key, options, callback) {
     if(err) return callback(err)
     if(response.statusCode !== 200) return callback(new Error('StatusCode ' + response.statusCode))
     var data = JSON.parse(body)
+    if(data.result.records.length === 0) return callback(new Error('Not Found'))
     callback(null, data.result.records[0].value)
   })
   
@@ -93,13 +94,30 @@ ckanDOWN.prototype._get = function (key, options, callback) {
 
 ckanDOWN.prototype._del = function (key, options, callback) {
   // delete
+  // debug curl -X POST http://demo.ckan.org/api/3/action/datastore_delete -H "Authorization: cc03492e-11b2-4ff5-aa81-148e6bb3da18" -d '{"resource_id": "37e5da24-90d5-4e57-b900-df6dd960c38d", "filters": {"key": "aberwas"}, "force": "True"}'
   var url = this.location + '/api/3/action/datastore_delete'
+  console.log(this.headers)
   request({
     url: url,
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      'Authorization': this.apikey
+    },
     json: {
-      resource_id: this.resourceID
+      resource_id: this.resourceID,
+      force: 'True',
+      filters: {
+        key: key
+      }
     }
-  }, callback)
+  }, function (err, response, body) {
+    if(err) return callback(err)
+    console.log(body)
+    if(response.statusCode !== 200) return callback(new Error('StatusCode ' + response.statusCode))
+    callback()
+  })
+
 }
 
 ckanDOWN.prototype._ckancall = function (resource) {
