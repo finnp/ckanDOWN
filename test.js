@@ -1,5 +1,5 @@
-var test = require('tap').test
-var testCommon = require('abstract-leveldown/testCommon')
+// var test = require('tap').test
+// var testCommon = require('abstract-leveldown/testCommon')
 var ckanDOWN = require('./')
 
 // require('abstract-leveldown/abstract/open-test').args(ckanDOWN, test, testCommon)
@@ -9,7 +9,15 @@ var ckanDOWN = require('./')
 
 var smalltest = ckanDOWN('http://demo.ckan.org')
 
-smalltest.put('test', 'blub', function (err) {
-  console.error(err)
-  console.log('done')
+// smalltest.create(function () {
+//   console.log('done')
+// })
+
+
+smalltest.put('aberwas', 'blub', function (err) {
+  smalltest.get('aberwas',function (err, value) {
+    console.log(value)
+  })
 })
+
+
