@@ -10,10 +10,12 @@
   "license": "MIT",
   "dependencies": {
     "abstract-leveldown": "^2.0.1",
+    "pg-escape": "0.0.3",
     "request": "^2.42.0",
     "tap": "^0.4.12"
   },
   "devDependencies": {
+    "rimraf": "^2.2.8",
     "tape": "^2.14.0"
   },
   "repository": {
