@@ -13,27 +13,3 @@ require('abstract-leveldown/abstract/put-test').all(ckanDOWN, test, testCommon)
 require('abstract-leveldown/abstract/get-test').all(ckanDOWN, test, testCommon)
 require('abstract-leveldown/abstract/del-test').all(ckanDOWN, test, testCommon)
 require('abstract-leveldown/abstract/put-get-del-test').all(ckanDOWN, test, testCommon, new Buffer('testbuffer'))
-
-
-// var smalltest = ckanDOWN('http://demo.ckan.org')
-
-// smalltest.create(function () {
-//   console.log('done')
-// })
-// 
-// 
-// smalltest.put('aberwas', 'blub', function (err) {
-//   smalltest.get('aberwas',function (err, value) {
-//     if(err) console.error(err)
-//     console.log(value)
-//     smalltest.del('aberwas', function (err) {
-//       if(err) console.error(err)
-//       console.log('deleted')
-//     })
-//   })
-// })
-
-// smalltest.del('aberwas', function (err) {
-//   if(err) console.error(err)
-//   console.log('deleted')
-// })
