@@ -1,6 +1,8 @@
 # ckanDOWN
 
 Experiment for using CKAN DataStore as levelDOWN drop-in replacement.
+It passes a subset of the [abstract-leveldown](https://github.com/rvagg/abstract-leveldown)
+test suite.
 
 ## Example
 
