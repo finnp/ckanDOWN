@@ -1,9 +1,33 @@
 var test = require('tape')
 var testCommon = require('abstract-leveldown/testCommon')
 var ckanDOWN = require('./')
+var request = require('request')
+
+var apikey = 'cc03492e-11b2-4ff5-aa81-148e6bb3da18'
+// TODO: Automatic creation of the test resource
+var testresource = '4363f707-2796-4882-9e2d-63eb77259740'
 
 testCommon.location = function () {
-  return 'http://demo.ckan.org/?resource=37e5da24-90d5-4e57-b900-df6dd960c38d&apikey=cc03492e-11b2-4ff5-aa81-148e6bb3da18'
+  return 'http://demo.ckan.org/?resource=' + testresource + '&apikey=' + apikey
+}
+
+testCommon.cleanup = function (callback) {
+  request({
+    url: 'http://demo.ckan.org/api/3/action/datastore_delete',
+    headers: {
+      'content-type': 'application/json',
+      'Authorization': apikey
+    },
+    method: 'POST',
+    json: {
+      'resource_id': testresource,
+      'force': true,
+      'filters': {}
+      }
+  }, function (err, response, body) {
+    if(err) throw err
+    callback()
+  })
 }
 
 require('abstract-leveldown/abstract/open-test').args(ckanDOWN, test, testCommon)
