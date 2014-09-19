@@ -6,6 +6,8 @@ test suite.
 
 Install it with `npm install ckandown`.
 
+Warning: The module will DELETE the data that are in the given resource and format it for its use.
+
 ## Example
 
 ```js
