@@ -47,7 +47,6 @@ ckanDOWN.prototype._open = function (options, callback) {
       primary_key: 'key'
     }
   }, function (err, response, body) {
-    // console.log(body)
     if(err) return callback(err)
     if(response.statusCode !== 200) return callback(new Error('StatusCode ' + response.statusCode))
     callback()
