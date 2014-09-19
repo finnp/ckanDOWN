@@ -33,15 +33,16 @@ ckanIterator.prototype._fetch = function (callback) {
 
 ckanIterator.prototype._next = function (callback) {
   // fetch first
+  var self = this
   if(!this.fetchedAll) {
     this._fetch(function (err) {
       if(err) return callback(err)
-      this._next(callback)
-    }.bind(this))
+      self._next(callback)
+    })
   } else {
     if(this.fetched.length === 0) return callback()
     var current = this.fetched.shift()
-    callback(null, current.key, current.value)
+    callback(null, new Buffer(current.key), new Buffer(current.value))
   }
   
 }

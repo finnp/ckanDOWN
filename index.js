@@ -139,12 +139,12 @@ ckanDOWN.prototype._batch = function (array, options, callback) {
   var next = function next (err) {
     if(err) return callback(err)
     if(array.length > 0)
-      this._batch(array, options, callback)
+      this._batch(array.slice(1), options, callback)
     else 
       callback()  
   }.bind(this)
   
-  var current = array.shift()
+  var current = array.slice(0,1)[0] // no shift, do not modify input array
   if(current.type === 'del') {
     this.del(current.key, options, next)
   } else if(current.type == 'put') {
