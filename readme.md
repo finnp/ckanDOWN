@@ -8,7 +8,7 @@ Install it with `npm install ckandown`.
 
 Warning: The module will DELETE the data that are in the given resource and format it for its use.
 
-Not that this is an experiment and rather slow, since it works over the CKAN REST API,
+Note that this is an experiment and rather slow, since it works over the CKAN REST API,
 e.g. the iterator will do one HTTP request per item.
 
 ## Example
