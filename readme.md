@@ -1,4 +1,4 @@
-# ckanDOWN
+# ckanDOWN [![Build Status](https://travis-ci.org/finnp/ckanDOWN.svg?branch=master)](https://travis-ci.org/finnp/ckanDOWN)
 
 Experiment for using CKAN DataStore as levelDOWN drop-in replacement.
 It passes a subset (see test.js) of the [abstract-leveldown](https://github.com/rvagg/abstract-leveldown)
