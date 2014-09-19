@@ -13,3 +13,7 @@ require('abstract-leveldown/abstract/put-test').all(ckanDOWN, test, testCommon)
 require('abstract-leveldown/abstract/get-test').all(ckanDOWN, test, testCommon)
 require('abstract-leveldown/abstract/del-test').all(ckanDOWN, test, testCommon)
 require('abstract-leveldown/abstract/put-get-del-test').all(ckanDOWN, test, testCommon, new Buffer('testbuffer'))
+
+require('abstract-leveldown/abstract/batch-test').all(ckanDOWN, test, testCommon)
+
+// require('abstract-leveldown/abstract/iterator-test').all(ckanDOWN, test, testCommon)

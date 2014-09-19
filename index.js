@@ -133,6 +133,27 @@ ckanDOWN.prototype._del = function (key, options, callback) {
 
 }
 
+ckanDOWN.prototype._batch = function (array, options, callback) {
+  if(array.length === 0) return callback()
+  
+  var next = function next (err) {
+    if(err) return callback(err)
+    if(array.length > 0)
+      this._batch(array, options, callback)
+    else 
+      callback()  
+  }.bind(this)
+  
+  var current = array.shift()
+  if(current.type === 'del') {
+    this.del(current.key, options, next)
+  } else if(current.type == 'put') {
+    if(!('value' in current) || current.value === null)
+        current.value = ''
+    this.put(current.key, current.value, options, next)
+  }
+}
+
 ckanDOWN.prototype._iterator = function (options) {
   return new ckanIterator(this, options)
 }
