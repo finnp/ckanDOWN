@@ -1,5 +1,5 @@
 {
-  "name": "ckanDOWN",
+  "name": "ckandown",
   "version": "1.0.0",
   "description": "LevelDOWN drop in replacement for the CKAN DataStore API",
   "main": "index.js",
