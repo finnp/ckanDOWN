@@ -1,6 +1,7 @@
 var util = require('util')
 var request = require('request')
 var AbstractLevelDOWN = require('abstract-leveldown').AbstractLevelDOWN
+var ckanIterator = require('./iterator')
 var sql = require('pg-escape')
 var qs = require('querystring')
 
@@ -130,6 +131,10 @@ ckanDOWN.prototype._del = function (key, options, callback) {
     callback()
   })
 
+}
+
+ckanDOWN.prototype._iterator = function (options) {
+  return new ckanIterator(this, options)
 }
 
 module.exports = ckanDOWN
